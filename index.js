@@ -1,16 +1,13 @@
 const express = require('express');
-const app = express();
-const port = 3000;
-const path = require('path');
 const bodyParser = require('body-parser');
-app.use(bodyParser.json()) ;
-app.use(bodyParser.urlencoded({ extended: true })) ;
-
-// app.get('/', (req, res) => {
-//     res.sendFile(__dirname + '/index.html');
-// });
-
+const app = express();
+const path = require('path');
+const port = 3000;
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "public")));
+
+const recipeList = [];
 
 // Define a GET route for "/recipe/:food"
 app.get('/recipe/:food', (req, res) => {
@@ -29,6 +26,15 @@ app.get('/recipe/:food', (req, res) => {
 
     // Send the JSON object as the response
     res.json(recipe);
+});
+
+// Define a POST route for "/recipe/"
+app.post('/recipe/', (req, res) => {
+    const newRecipe = req.body;
+
+    recipeList.push(newRecipe);
+    // Send the JSON object back
+    res.json(newRecipe);
 });
 
 // Start the server
