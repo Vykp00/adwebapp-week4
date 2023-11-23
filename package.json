@@ -1,27 +1,23 @@
 {
   "name": "adwebapp-week4",
-  "version": "0.0.0",
-  "private": true,
+  "version": "1.0.0",
+  "description": "LOL!",
+  "main": "index.js",
   "scripts": {
-    "start": "nodemon app.js"
+    "start": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "dependencies": {
-    "cookie-parser": "~1.4.4",
-    "debug": "~2.6.9",
-    "express": "~4.16.1",
-    "morgan": "~1.9.1"
-  },
-  "description": "\"Exercise 4 Recipe app\"",
-  "main": "app.js",
-  "devDependencies": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Vykp00/adwebapp-week4.git"
   },
   "author": "Vy",
-  "license": "Apache-2.0",
+  "license": "ISC",
   "bugs": {
     "url": "https://github.com/Vykp00/adwebapp-week4/issues"
   },
-  "homepage": "https://github.com/Vykp00/adwebapp-week4#readme"
+  "homepage": "https://github.com/Vykp00/adwebapp-week4#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
 }
