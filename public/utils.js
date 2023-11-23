@@ -56,18 +56,18 @@ function inittializeCode () {
         console.log(instructionForm);
         console.log(`${instruction.value} added`);
     });
-    /*
-        // add images to FormData when it's uploaded
-        const addImg = document.getElementById('image-input');
-        addImg.addEventListener('change', async () => {
-            console.log(addImg.files.length);
-            for (var i = 0; i < addImg.files.length; i++) {
-                formData.append('images', addImg.files[i]);
-            };
-            console.log(...formData);
-            console.log("Image added");
-        });
-        */
+
+    // add images to FormData when it's uploaded
+    const addImg = document.getElementById('image-input');
+    addImg.addEventListener('change', async () => {
+        console.log(addImg.files.length);
+        for (var i = 0; i < addImg.files.length; i++) {
+            formData.append('images', addImg.files[i]);
+        };
+        console.log(...formData);
+        console.log("Image added");
+    });
+
 
     // Handle POST request to /recipe/ and /image
     const submitBtn = document.querySelector('#submit');
@@ -105,5 +105,14 @@ function inittializeCode () {
                 console.log('New recipe added:', recipe);
             })
             .catch(error => console.error('Error adding new recipe:', error));
+
+        fetch('/images', {
+            method: 'POST',
+            body: formData,
+        })
+        .then((res) => {
+          console.log(res)
+        })
+        .catch(error => console.error('Error adding new images:', error));
     });
 };

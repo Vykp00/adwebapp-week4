@@ -4,11 +4,11 @@ const app = express();
 const path = require('path');
 const port = 3000;
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public")));
 
 const recipeList = [];
-
+const images = [];
 // Define a GET route for "/recipe/:food"
 app.get('/recipe/:food', (req, res) => {
     const foodName = req.params.food;
@@ -35,6 +35,13 @@ app.post('/recipe/', (req, res) => {
     recipeList.push(newRecipe);
     // Send the JSON object back
     res.json(newRecipe);
+});
+
+// Define a POST images route
+app.post("/images", (req, res) => {
+    images.push(req.body)
+    console.log(req.body);
+    res.send("Hi");
 });
 
 // Start the server
